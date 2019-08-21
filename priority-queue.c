@@ -34,7 +34,6 @@ void display(int prior)
     int i;
     for(i=f[prior];i!=r[prior];i=(i+1)%col)
     {
-        prior=0;
        printf("%d\n",a[prior][i]);
     }
     printf("%d\n",a[prior][i]);
