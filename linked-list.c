@@ -152,11 +152,11 @@ int count()
 
 }
 //creating the list :
-void create(int up,int low)
+void create(int up,int low,int d)
 {
 	int i;
 
-	for(i=low;i<=up;i++)
+	for(i=low;i<=up;i=i+d)
 	{
 		insertbeg(i);
 	}
@@ -184,8 +184,8 @@ void reverselist()
 //under the construction :
 void removeall(int pos)
 {
-printf("\nUnder construction :");
-/*
+//printf("\nUnder construction :");
+
 	int c=0;
 	struct node *p;
 	p=start;
@@ -197,7 +197,7 @@ printf("\nUnder construction :");
 	p->next=NULL;
 	printf("\nAfter removing the required elements : final list as follows :");
 	display();
-*/}
+}
 //reverse with the recursion :
 void reverserec(struct node *p)
 {
@@ -334,7 +334,7 @@ void main()
 {
 	int code,opt,up,low,index,index1;
 	char ch;
-	int c,data,val;
+	int c,data,val,dif;
 	do
 {
 	printf("Hey Want Help Buddy : put 1 for help :\n");
@@ -387,13 +387,14 @@ void main()
 			printf("\nCreating the list sir please select the Range upper and lower bound : ");
 			printf("\nSelect the upper bound :");scanf("%d",&up);
 			printf("\nSelect the lower bound :");scanf("%d",&low);
+			printf("\nEnter the common difference :");scanf("%d",&dif);
 			//printf("\nSelect the Lower bound :");scanf("%d",&low);
 			if(low>up)
 	        {
 	        	printf("Hey , are you crazy lower bound cannot be bigger than upper bound don't worry Swapping : ");
 		       swap(&up,&low);
 	        }
-			create(up,low);
+			create(up,low,dif);
 			break;
 		case 9:
 			printf("\nReversing the linked list : ");
