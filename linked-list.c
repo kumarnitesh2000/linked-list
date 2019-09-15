@@ -407,7 +407,7 @@ void main()
 		case 10:
 				printf("\nIn this feature you can enter the index no. including which all next to this are excluded form the list :");
 				printf("\nEnter the index no . : ");scanf("%d",&index);
-				void removeall(index);
+				removeall(index);
 				break;
 		case 11:
 			printf("Showing the nth node : ");
