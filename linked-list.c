@@ -56,7 +56,7 @@ void help()
 	scanf("%d",&code);
 	if(code==786)
 	{
-		printf("\n(1) insert at beggining pos -->\n(2) insert at end position -->\n(3) delete the last -->\n(4) delete the front -->\n(5)Display list\n(6) Count elements --> \n(7) Deleting the required data :\n(8) Create list -->\n(9) Reversing list : \n(10) Removing the element from your index no .\n(11) Show the nth node : \n (12) Insertion at nth pos :\n(13) Delete the nth npde : ");
+		printf("\n(1) insert at beggining pos -->\n(2) insert at end position -->\n(3) delete the last -->\n(4) delete the front -->\n(5)Display list\n(6) Count elements --> \n(7) Deleting the required data :\n(8) Create list -->\n(9) Reversing list : \n(10) Removing the element from your index no .\n(11) Show the nth node : \n (12) Insertion at nth pos :\n(13) Delete the nth npde : \n(14) Swapping the two nodes :");
 	}	
 }
 //insert the value at the beggining :
@@ -244,25 +244,41 @@ void swapnode(int i,int j)
 {
 	int c=0;
 	//i and j are the index no. :
-   //t is pointing towards the j th index
-	struct node *p,*t;
-   //p is pointing towards the ith index :
-	 p=start;
-	 t=start;
-	 while(c<i)
+	
+	struct node *prev1,*prev2,*node1,*node2;
+   //node1 is pointing towards the ith index :
+   //node is pointing towards the jth index :	 
+   //prev1 is pointing towards the previous of node1
+   //same as prev1 prev2 is there : 
+	 node1=start;
+	 prev1=start;
+	 node1=prev1->next;
+	 while(c<i-1)
 	 {
-	 	p=p->next;
+	 	prev1=prev1->next;
+	 	node1=node1->next;
 	 	c++;
 	 }
 	 c=0;
-	 while(c<j)
+	 node2=start;
+	 prev2=start;
+	 node2=prev2->next;
+	 while(c<j-1)
 	 {
-	 	t=t->next;
+	 	prev2=prev2->next;
+	 	node2=node2->next;
 	 	c++;
 	 }
-	//now p pointing towards the ith index and t is pointing towards the jth index :
-	//main code goes here :
 	
+	//main code goes here :
+	//now prev1,node1,prev2,node2 are all set guys :
+	
+    prev1->next=node2;
+	prev2->next=node1;
+	node1->next=node2->next;
+	node2->next=prev2;
+		
+	printf("\n Hey , Swapped Successfully : \n");
 }
 //insert at the nth node :
 void insertionnth(int i,int data)
@@ -316,7 +332,7 @@ void deletenth(int index)
 //main function :
 void main()
 {
-	int code,opt,up,low,index;
+	int code,opt,up,low,index,index1;
 	char ch;
 	int c,data,val;
 	do
@@ -407,6 +423,14 @@ void main()
 			nthnode(index);
 			printf("\nAnd you want to delete this data : ");
 		  	deletenth(index);
+			break;
+		case 14:
+			printf("\nHey want to swap the two nodes :");
+			printf("\nEnter the node1 and node2 position : ");
+			scanf("%d%d",&index,&index1);
+			swapnode(index,index1);
+			printf("\nAfter , doing the Swapping the list is as follows : ");
+			display();
 			break;	
 		default:
 			printf("\ninvalid request ");
